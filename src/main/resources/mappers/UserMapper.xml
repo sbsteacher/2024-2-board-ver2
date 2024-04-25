@@ -15,4 +15,10 @@
          WHERE uid = #{uid}
     </select>
 
+    <update id="patchPassword">
+        UPDATE user
+        SET upw = #{newPw}
+        WHERE user_id = #{userId}
+    </update>
+
 </mapper>

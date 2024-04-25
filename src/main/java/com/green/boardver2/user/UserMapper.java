@@ -1,5 +1,6 @@
 package com.green.boardver2.user;
 
+import com.green.boardver2.user.model.ChangePasswordPatchReq;
 import com.green.boardver2.user.model.UserEntity;
 import com.green.boardver2.user.model.UserPostReq;
 import org.apache.ibatis.annotations.Mapper;
@@ -8,4 +9,5 @@ import org.apache.ibatis.annotations.Mapper;
 public interface UserMapper {
     int postUser(UserPostReq p);
     UserEntity getUserById(String uid);
+    int patchPassword(ChangePasswordPatchReq p);
 }
