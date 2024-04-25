@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: boardVer2
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: jdbc:mariadb://localhost:3306/board2024_v2
+    username: root
+    password: green502
+
+mybatis:
+  mapper-locations: mappers/**/*.xml
+
+springdoc:
+  swagger-ui:
+    path: /swagger
