@@ -1,13 +1,13 @@
 package com.green.boardver2.board;
 
+import com.green.boardver2.board.model.BoardGetRes;
 import com.green.boardver2.board.model.BoardPostReq;
 import com.green.boardver2.common.ResultDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -24,4 +24,15 @@ public class BoardController {
                 .resultMsg("")
                 .resultData(result).build();
     }
+
+    @GetMapping
+    public ResultDto<List<BoardGetRes>> getBoardList() {
+        List<BoardGetRes> list = service.getBoardList();
+
+        return ResultDto.<List<BoardGetRes>>builder()
+                .statusCode(HttpStatus.OK)
+                .resultMsg(String.format("rowCount: %d", list.size()))
+                .resultData(list).build();
+    }
+
 }
