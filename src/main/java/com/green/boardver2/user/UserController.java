@@ -1,6 +1,7 @@
 package com.green.boardver2.user;
 
 import com.green.boardver2.common.ResultDto;
+import com.green.boardver2.user.model.SignInPostReq;
 import com.green.boardver2.user.model.UserPostReq;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -26,4 +27,16 @@ public class UserController {
                                         .resultData(result).build()
         );
     }
+
+    public ResponseEntity<ResultDto<Integer>> postSignin(@RequestBody SignInPostReq p) {
+        int result = service.postSignIn(p);
+
+        return ResponseEntity.ok(ResultDto.<Integer>builder()
+                .statusCode(HttpStatus.OK)
+                .resultMsg(HttpStatus.OK.toString())
+                .resultData(result).build()
+        );
+    }
+
+
 }

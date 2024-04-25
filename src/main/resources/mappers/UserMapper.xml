@@ -4,9 +4,15 @@
 
     <insert id="postUser">
         INSERT INTO user
-        SET uid = #{uid}
-        , upw = #{upw}
-        , nm = #{nm}
+           SET uid = #{uid}
+             , upw = #{upw}
+             , nm = #{nm}
     </insert>
+
+    <select id="getUserById">
+        SELECT user_id AS userId, uid, upw, nm, created_at AS createdAt, updated_at AS updatedAt
+          FROM user
+         WHERE uid = #{uid}
+    </select>
 
 </mapper>
