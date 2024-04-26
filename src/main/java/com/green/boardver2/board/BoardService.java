@@ -1,5 +1,6 @@
 package com.green.boardver2.board;
 
+import com.green.boardver2.board.model.BoardDetailGetRes;
 import com.green.boardver2.board.model.BoardGetRes;
 import com.green.boardver2.board.model.BoardPostReq;
 import lombok.RequiredArgsConstructor;
@@ -18,5 +19,9 @@ public class BoardService {
 
     public List<BoardGetRes> getBoardList() {
         return mapper.getBoardList();
+    }
+
+    public BoardDetailGetRes getBoardOne(long boardId) {
+        return mapper.getBoardOne(boardId);
     }
 }

@@ -18,4 +18,14 @@
             ON A.writer_id = B.user_id
     </select>
 
+    <select id="getBoardOne">
+        SELECT A.board_id AS boardId, A.title, A.contents
+        , A.writer_id AS writerId, B.nm AS writerNm
+        , A.hits, A.created_at AS createdAt
+        FROM board A
+        INNER JOIN user B
+        ON A.writer_id = B.user_id
+        WHERE A.board_id = #{boardId}
+    </select>
+
 </mapper>
