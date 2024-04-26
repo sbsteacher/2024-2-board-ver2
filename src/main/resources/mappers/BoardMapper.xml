@@ -43,6 +43,12 @@
         WHERE board_id = #{boardId}
     </update>
 
+    <update id="patchBoardHits">
+        UPDATE board
+        SET hits = hits + 1
+        WHERE board_id = #{boardId}
+    </update>
+
     <delete id="deleteBoard">
         DELETE FROM board WHERE board_id = #{board_id}
     </delete>

@@ -25,12 +25,7 @@ public class BoardController {
     }
 
     @GetMapping
-    public ResultDto<List<BoardGetRes>> getBoardList(@RequestParam(name = "page") int page
-            , @RequestParam(name = "size", defaultValue = "10") int size) {
-        BoardGetReq p = new BoardGetReq();
-        p.setStartIdx((page - 1) * size);
-        p.setLen(size);
-
+    public ResultDto<List<BoardGetRes>> getBoardList(@ModelAttribute BoardGetReq p) {
         List<BoardGetRes> list = service.getBoardList(p);
 
         return ResultDto.<List<BoardGetRes>>builder()

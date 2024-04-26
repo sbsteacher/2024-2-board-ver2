@@ -12,6 +12,7 @@ public class BoardService {
     private final BoardMapper mapper;
 
     public int postBoard(BoardPostReq p) {
+
         return mapper.postBoard(p);
     }
 
@@ -20,7 +21,11 @@ public class BoardService {
     }
 
     public BoardDetailGetRes getBoardOne(long boardId) {
-        return mapper.getBoardOne(boardId);
+        BoardDetailGetRes result = mapper.getBoardOne(boardId);
+        if(result != null) { // Record가 있다면 조회수 + 1
+            mapper.patchBoardHits(boardId);
+        }
+        return result;
     }
 
     public int putBoard(BoardPutReq p) {
