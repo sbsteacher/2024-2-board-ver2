@@ -28,4 +28,20 @@
         WHERE A.board_id = #{boardId}
     </select>
 
+    <update id="putBoard">
+        UPDATE board
+        <set>
+            <if test=" title != null and title != '' ">
+                title = #{title},
+            </if>
+            <if test=" contents != null and contents != '' ">
+                contents = #{contents},
+            </if>
+        </set>
+        WHERE board_id = #{boardId}
+    </update>
+
+    <delete id="deleteBoard">
+        DELETE FROM board WHERE board_id = #{board_id}
+    </delete>
 </mapper>

@@ -3,6 +3,7 @@ package com.green.boardver2.board;
 import com.green.boardver2.board.model.BoardDetailGetRes;
 import com.green.boardver2.board.model.BoardGetRes;
 import com.green.boardver2.board.model.BoardPostReq;
+import com.green.boardver2.board.model.BoardPutReq;
 import com.green.boardver2.common.ResultDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -46,5 +47,21 @@ public class BoardController {
                 .resultData(result).build();
     }
 
+    @PutMapping
+    public ResultDto<Integer> putBoard(@RequestBody BoardPutReq p) {
+        int result = service.putBoard(p);
+        return ResultDto.<Integer>builder()
+                .statusCode(HttpStatus.OK)
+                .resultMsg(HttpStatus.OK.toString())
+                .resultData(result).build();
+    }
 
+    @DeleteMapping
+    public ResultDto<Integer> deleteBoard(@RequestParam(name = "board_id") long boardId) {
+        int result = service.deleteBoard(boardId);
+        return ResultDto.<Integer>builder()
+                .statusCode(HttpStatus.OK)
+                .resultMsg(HttpStatus.OK.toString())
+                .resultData(result).build();
+    }
 }
