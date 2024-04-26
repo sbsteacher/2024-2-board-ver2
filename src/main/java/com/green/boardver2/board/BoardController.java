@@ -1,9 +1,6 @@
 package com.green.boardver2.board;
 
-import com.green.boardver2.board.model.BoardDetailGetRes;
-import com.green.boardver2.board.model.BoardGetRes;
-import com.green.boardver2.board.model.BoardPostReq;
-import com.green.boardver2.board.model.BoardPutReq;
+import com.green.boardver2.board.model.*;
 import com.green.boardver2.common.ResultDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -28,8 +25,13 @@ public class BoardController {
     }
 
     @GetMapping
-    public ResultDto<List<BoardGetRes>> getBoardList() {
-        List<BoardGetRes> list = service.getBoardList();
+    public ResultDto<List<BoardGetRes>> getBoardList(@RequestParam(name = "page") int page
+            , @RequestParam(name = "size", defaultValue = "10") int size) {
+        BoardGetReq p = new BoardGetReq();
+        p.setStartIdx((page - 1) * size);
+        p.setLen(size);
+
+        List<BoardGetRes> list = service.getBoardList(p);
 
         return ResultDto.<List<BoardGetRes>>builder()
                 .statusCode(HttpStatus.OK)

@@ -16,6 +16,8 @@
           FROM board A
          INNER JOIN user B
             ON A.writer_id = B.user_id
+         ORDER BY A.board_id DESC
+         LIMIT #{startIdx}, #{len}
     </select>
 
     <select id="getBoardOne">

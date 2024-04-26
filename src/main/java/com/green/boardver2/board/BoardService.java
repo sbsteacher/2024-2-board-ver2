@@ -1,9 +1,6 @@
 package com.green.boardver2.board;
 
-import com.green.boardver2.board.model.BoardDetailGetRes;
-import com.green.boardver2.board.model.BoardGetRes;
-import com.green.boardver2.board.model.BoardPostReq;
-import com.green.boardver2.board.model.BoardPutReq;
+import com.green.boardver2.board.model.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -18,8 +15,8 @@ public class BoardService {
         return mapper.postBoard(p);
     }
 
-    public List<BoardGetRes> getBoardList() {
-        return mapper.getBoardList();
+    public List<BoardGetRes> getBoardList(BoardGetReq p) {
+        return mapper.getBoardList(p);
     }
 
     public BoardDetailGetRes getBoardOne(long boardId) {
